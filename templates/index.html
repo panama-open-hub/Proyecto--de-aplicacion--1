@@ -108,8 +108,8 @@
                       <th><i class="icon_pencil-edit"></i> Permissions</th>
                     </tr>
                     <tr>
-                      <td>DHT22</td>
-                      <td>Temperature [°C]</td>
+                      <td>Actuador1</td>
+                      <td>Level</td>
                       {% if len(data) > 1 %}
                         <td>{{data[1][0]["value"]}}</td>
                       {% else %}
@@ -129,8 +129,8 @@
                       <td>Read</td>
                     </tr>
                     <tr>
-                      <td>DHT22</td>
-                      <td>Humidity [%]</td>
+                      <td>Sensor1</td>
+                      <td>Reading</td>
                       {% if len(data) > 1 %}
                       <td>{{data[1][1]["value"]}}</td>
                       {% else %}
