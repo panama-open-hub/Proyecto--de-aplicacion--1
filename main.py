@@ -11,8 +11,8 @@ import tornado.web
 from tornado import gen,ioloop, web
 from tornado.gen import multi
 from tornado.options import define, options
-import modules.pohLcd
-#import modules.pohLed
+import gpiozero #BCM pin numbering
+import pohRtc
 
 
 print("The Python version is %s.%s.%s" % sys.version_info[:3])
