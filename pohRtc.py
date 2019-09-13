@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import smbus
+from smbus2 import SMBus
 import time
 
 address = 0x68
@@ -8,8 +8,13 @@ register = 0x00
 #sec min hour week day mout year
 NowTime = [0x00,0x00,0x18,0x04,0x12,0x08,0x15]
 w  = ["SUN","Mon","Tues","Wed","Thur","Fri","Sat"]
+
+
+def now():
+	return 52
+
 #/dev/i2c-1
-bus = smbus.SMBus(1)
+bus = SMBus(1)
 def ds3231SetTime():
 	bus.write_i2c_block_data(address,register,NowTime)
 
