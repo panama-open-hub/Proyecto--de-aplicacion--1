@@ -12,6 +12,7 @@ from tornado import gen,ioloop, web
 from tornado.gen import multi
 from tornado.options import define, options
 import gpiozero #BCM pin numbering
+import pohRtc
 
 print("The Python version is %s.%s.%s" % sys.version_info[:3])
 define("port", default=8888, help="run on the given port", type=int)
