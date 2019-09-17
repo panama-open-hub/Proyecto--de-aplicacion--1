@@ -3,12 +3,6 @@
 from smbus2 import SMBus
 import time
 
-#sec min hour week day mout year
-#NowTime = [0x00,0x00,0x18,0x04,0x12,0x08,0x15]
-#w  = ["SUN","Mon","Tues","Wed","Thur","Fri","Sat"]
-#address=0x68, register=0x00
-#bus = SMBus(1) #/dev/i2c-1
-
 w  = ["SUN","Mon","Tues","Wed","Thur","Fri","Sat"]
 
 class RTC():
