@@ -8,6 +8,7 @@ class Luz():
     def Encender(self):
         led = LED(self. pin)
         led.on()
+        time.sleep(2)
         print("Todo Bien")
         
     def Apagar(self):
