@@ -2,12 +2,11 @@ import pohLcd
 from time import sleep
 
 display = pohLcd.Pantalla()
-display.Test()
-"""
-Display.Encender()
+display.Encender()
 sleep(3)
-Display.Limpiar()
+display.Test()
+sleep(10)
+display.Limpiar()
 sleep(2)
-Display.Apagar()
+display.Apagar()
 print("Maquinitas xdd")
-"""

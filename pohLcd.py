@@ -2,23 +2,13 @@ from RPLCD.i2c import CharLCD
 from time import sleep
 
 class Pantalla(CharLCD):
-    def __init__(self, i2c_expander='PCF8574', address=0x27, cols=16, rows=2, auto_linebreaks=True, backlight_enabled=False, texto="texto por defecto"):
-        """
-        self.expander = i2c_expander
-        self.address = address
-        self.cols = cols
-        self.rows = rows
-        self.auto_linebreaks = auto_linebreaks
-        self.backlight_enabled = backlight_enabled
-        """
+    def __init__(self, displayID='PCF8574', direccion=0x27, columnas=16, lineas=2, ropt_lineas=True, luz_trasera=False, texto="texto por defecto"):
         self.texto = texto
-        
-        self.screen = CharLCD(i2c_expander='PCF8574', address=0x27,
-              cols=16, rows=2,
-              auto_linebreaks=True,
-              backlight_enabled=False)
+        self.screen = CharLCD(i2c_expander=displayID, address=direccion,
+              cols=columnas, rows=lineas,
+              auto_linebreaks=ropt_lineas,
+              backlight_enabled=luz_trasera)
     
-
     def Test(self):
         self.screen.clear()
         self.screen.backlight_enabled = True
@@ -51,7 +41,7 @@ class Pantalla(CharLCD):
     
     def Imprimir(self):
         text = self.texto
-        text = input("Ingrese el texto que desea que se imprima")
+        text = input("Ingrese el texto que desea que se imprima: ")
         if text== "":
             text=self.texto
             print(text)
