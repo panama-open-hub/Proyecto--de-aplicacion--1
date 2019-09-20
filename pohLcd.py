@@ -17,7 +17,6 @@ class Pantalla(CharLCD):
         sleep(3)
         self.screen.cursor_mode = "hide"
         self.screen.clear()
-        self.screen.backlight_enabled = False
         print("Hecho")
 
     def Encender(self):
@@ -33,6 +32,7 @@ class Pantalla(CharLCD):
         self.screen.display_enabled = False
         self.screen.backlight_enabled = False
         print("Apagado")
+        
 
     def Limpiar(self):
         self.screen.clear()
