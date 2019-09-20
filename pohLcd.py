@@ -1,6 +1,8 @@
 from RPLCD.i2c import CharLCD
 from time import sleep
+import datetime
 
+t= datetime.datetime.now()
 class Pantalla(CharLCD):
     def __init__(self, displayID='PCF8574', direccion=0x27, columnas=16, lineas=2, ropt_lineas=True, luz_trasera=False, texto="texto por defecto"):
         self.texto = texto
@@ -17,7 +19,6 @@ class Pantalla(CharLCD):
         sleep(3)
         self.screen.cursor_mode = "hide"
         self.screen.clear()
-        self.screen.backlight_enabled = False
         print("Hecho")
 
     def Encender(self):
@@ -34,17 +35,23 @@ class Pantalla(CharLCD):
         self.screen.backlight_enabled = False
         print("Apagado")
 
+
     def Limpiar(self):
         self.screen.clear()
         self.screen.cursor_mode = "hide"
         print("Pantalla limpia")
     
     def Imprimir(self):
-        text = self.texto
-        text = input("Ingrese el texto que desea que se imprima: ")
+        self.screen.display_enabled = True
+        text = str(self.texto)
+        text = str(input("Ingrese el texto que desea que se imprima: "))
         if text== "":
             text=self.texto
             print(text)
             self.write_string(text)
         else:
             self.write_string(text)
+
+    def FechaHora(self):
+        self.screen.display_enabled = True
+        self.write_string("%s,%s,%s" & (t.day,t.month,t.year))
