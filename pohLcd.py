@@ -34,6 +34,7 @@ class Pantalla(CharLCD):
         self.screen.display_enabled = False
         self.screen.backlight_enabled = False
         print("Apagado")
+        
 
 
     def Limpiar(self):
