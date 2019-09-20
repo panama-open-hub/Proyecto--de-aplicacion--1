@@ -1,5 +1,8 @@
 import pohBuzzer
 
-Bocina1 = pohBuzzer.zum(0x20)
-Bocina1.Encender()
+bocina1 = pohBuzzer.Zum(1,0x20)
+print(bocina1.address)
+print(bocina1.buss)
+bocina1.Encender(2)
+bocina1.Apagar()
 
