@@ -18,7 +18,7 @@ class Pantalla(CharLCD):
         self.screen.cursor_mode = "hide"
         self.screen.clear()
         self.screen.backlight_enabled = False
-        print("done")
+        print("Hecho")
 
     def Encender(self):
         self.screen.display_enabled = True
@@ -47,4 +47,4 @@ class Pantalla(CharLCD):
             print(text)
             self.write_string(text)
         else:
-            pass
+            self.write_string(text)

@@ -3,10 +3,16 @@ from time import sleep
 
 display = pohLcd.Pantalla()
 display.Encender()
-sleep(3)
+sleep(5)
+
 display.Test()
 sleep(10)
+
 display.Limpiar()
 sleep(2)
+
+display.Imprimir()
+sleep(10)
+
 display.Apagar()
-print("Maquinitas xdd")
+print("Terminado")
