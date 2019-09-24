@@ -11,11 +11,11 @@ sleep(5)
 display.Limpiar()
 sleep(2)
 
-display.Imprimir()
-sleep(5)
-
 display.FechaHora()
 sleep(3)
+
+display.Imprimir()
+sleep(5)
 
 display.Apagar()
 print("Terminado")

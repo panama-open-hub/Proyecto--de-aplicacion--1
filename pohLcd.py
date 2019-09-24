@@ -44,14 +44,15 @@ class Pantalla(CharLCD):
     
     def Imprimir(self):
         self.screen.display_enabled = True
-        text = str(self.texto)
-        text = str(input("Ingrese el texto que desea que se imprima: "))
-        if text== "":
-            text=self.texto
-            print(text)
-            self.write_string(text)
+        self.text1 = self.texto
+        print("prueba de texto ", self.text1)
+        self.text1 = input("Ingrese el texto que desea que se imprima: ")
+        if self.text1 == "":
+            self.text1=self.texto
+            print(self.text1)
+            self.write_string(self.text1)
         else:
-            self.write_string(text)
+            self.write_string(self.text1)
 
     def FechaHora(self):
         self.screen.display_enabled = True
