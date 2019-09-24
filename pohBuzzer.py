@@ -1,10 +1,20 @@
-import gpiozero
-from smbus2 import SMBus
+from gpiozero import pohBuzzer
+from gpiozero.tones import Tone
 from time import sleep
+t = TonalBuzzer(27)
+
+class zum():
+   def __init__(self,busnemer=1,address=20)
+      self.address = 27
+      self.buss = SMBus(busnumber)
+
+   def Encender(self)
+      
+   def Apagado(self)
 
 
-class Zum():
-   def __init__(self,busNumber=1, addr=0x20):
+class Zumi2c():
+   def __init__(self,busNumber=1,addr=0x20):
       self.address = addr
       self.buss = SMBus(busNumber)
 
