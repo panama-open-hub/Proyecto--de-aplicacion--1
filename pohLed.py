@@ -1,4 +1,5 @@
 from gpiozero import LED
+from datetime import datetime, timedelta
 import time 
 
 class Luz():
@@ -8,7 +9,6 @@ class Luz():
     def Encender(self):
         led = LED(self. pin)
         led.on()
-        time.sleep(2)
         print("Todo Bien")
         
     def Apagar(self):
@@ -18,11 +18,22 @@ class Luz():
         else:
             pass
     
-      
-
-        
-        
-  
+    def Parpadeo(self):
+        led = LED(self.pin)
+        while led.on == True:
+            timeout = 5   # [seconds]
+            timeout_start = time.time()
+            test = 0
+            print(datetime.now(),"Contando")
+            while time.time() < timeout_start + timeout:
+                if test == 5:
+                    print("Works")
+                     #print(datetime.now())
+                     #break
+                test = test + 1
+                #print(datetime.now())
+            led.n(10)
+            print(datetime.now(),"Dispositivo apagandose") 
 
 
 
