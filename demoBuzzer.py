@@ -8,7 +8,15 @@ def beep_on():
 	bus.write_byte(address,0x7F&bus.read_byte(address)) #read one byte from address, offset 0
 def beep_off():
 	bus.write_byte(address,0x80|bus.read_byte(address)) #read one byte from address, offset 0
+<<<<<<< Updated upstream
 bus = SMBus(1)# Open i2c bus 1
+=======
+bus = SMBus(1) # Open i2c bus 1
+    
+
+
+
+>>>>>>> Stashed changes
 
 
 if __name__ == '__main__':		# Program start from here
