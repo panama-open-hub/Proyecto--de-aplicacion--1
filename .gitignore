@@ -1,5 +1,5 @@
+*.pyc
 *.wav
-.vscode/settings.json
-__pycache__/test3.cpython-35.pyc
-.vscode/settings.json
+*.json
+
 
