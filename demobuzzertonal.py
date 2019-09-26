@@ -2,7 +2,13 @@ from gpiozero import TonalBuzzer
 from gpiozero.tones import Tone
 from time import sleep
 t = TonalBuzzer(27) # change to whatever pin the buzzer is connected
+t.play("A2")
+sleep(1)
+t.stop()
+sleep(0.1)
 
+
+"""
 v1 = ["G4", "G4", "G4", "D4", "E4", "E4", "D4"]
 v2 = ["B4", "B4", "A4", "A4", "G4"]
 v3 = ["D4", "G4", "G4", "G4", "D4", "E4", "E4", "D4"]
@@ -16,3 +22,4 @@ for verse in song:
         t.stop()
         sleep(0.1)
     sleep(0.2)
+    """
