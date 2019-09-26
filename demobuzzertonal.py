@@ -2,7 +2,7 @@ from gpiozero import TonalBuzzer
 from gpiozero.tones import Tone
 from time import sleep
 t = TonalBuzzer(27) # change to whatever pin the buzzer is connected
-t.play("A2")
+t.play(Tone("A2"))
 sleep(1)
 t.stop()
 sleep(0.1)
