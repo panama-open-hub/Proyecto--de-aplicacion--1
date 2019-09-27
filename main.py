@@ -11,7 +11,8 @@ import tornado.web
 from tornado import gen,ioloop, web
 from tornado.gen import multi
 from tornado.options import define, options
-from modules import pohLcd, pohLed
+import modules.pohLcd
+#import modules.pohLed
 
 
 print("The Python version is %s.%s.%s" % sys.version_info[:3])
