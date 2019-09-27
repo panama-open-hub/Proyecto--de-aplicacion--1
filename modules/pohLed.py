@@ -1,4 +1,3 @@
-#!/usr/bin/python3.4
 import gpiozero as GPIO
 import time
 from signal import pause
