@@ -1,4 +1,4 @@
-from gpiozero import LED
+from gpiozero import LED,PWMLED
 from datetime import datetime, timedelta
 import time 
 
@@ -21,12 +21,12 @@ class Luz():
     def Parpadeo(self):
         led = LED(self.pin)
         while led.on == True:
-            timeout = 5   # [seconds]
+            timeout = 20   # [seconds]
             timeout_start = time.time()
             test = 0
             print(datetime.now(),"Contando")
             while time.time() < timeout_start + timeout:
-                if test == 5:
+                if test == 20:
                     print("Works")
                      #print(datetime.now())
                      #break
@@ -34,6 +34,28 @@ class Luz():
                 #print(datetime.now())
             led.n(10)
             print(datetime.now(),"Dispositivo apagandose") 
+
+    def Brillo(self):
+        led = LED(self.pin)
+        while led.on == True:
+            tiempo = 10   # [seconds]
+            timeout_start = time.time()
+            test = 0
+            print(datetime.now(),"Contando")
+            while time.time() < timeout_start + tiempo:
+                if test == 20:
+                    print("Works 2")
+                    #print(datetime.now())
+                    #break
+                test = test + 1
+                #print(datetime.now())
+            print(datetime.now(),"Brillo del LED?")
+            brillo = int(input())
+            brillopwm = brillo/100.0
+            print(str(brillopwm))
+            PWMLED.intial_value(brillopwm)
+            print("Brillo regulado a:%s" %brillo)
+
 
 
 
