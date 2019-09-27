@@ -147,18 +147,27 @@ def buzz(frequency, length):	 #create the function "buzz" and feed it the pitch 
 def setup():
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(buzzer_pin, GPIO.IN)
-	GPIO.setup(buzzer_pin, GPIO.OUT)
+    GPIO.setup(buzzer_pin, GPIO.OUT)
 
 def destroy():
 	GPIO.cleanup()				# Release resource
 
-if __name__ == '__main__':		# Program start from here
-	try:
-		setup()
-		print "Star Wars Theme"
-		play(star_wars_melody, star_wars_tempo, 0.50, 1.000)
-		time.sleep(2)
+def play(melody,tempo,pause,pace=0.800):
+    	
+	for i in range(0, len(melody)):		# Play song
 		
-		destroy()
+		noteDuration = pace/tempo[i]
+		buzz(melody[i],noteDuration)	# Change the frequency along the song note
+		
+		pauseBetweenNotes = noteDuration * pause
+		time.sleep(pauseBetweenNotes)
+
+if __name__ == '__main__':		# Program start from here
+    try:
+        setup()
+        print ("Star Wars Theme")
+        play(star_wars_melody, star_wars_tempo, 0.50, 1.000)
+        time.sleep(2)
+        destroy()
 	except KeyboardInterrupt:  	# When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
 		destroy()
