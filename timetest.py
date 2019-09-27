@@ -1,42 +1,31 @@
 from datetime import datetime, timedelta
+from gpiozero import LED,PWMLED
 import time
-
-#ini_time_for_now = datetime.now() 
-#print ("initial_date", str(ini_time_for_now)) 
-#minutostranscurridos = ini_time_for_now + timedelta(seconds = 10)
-
-
-#while ini_time_for_now =/= (minutos trnascurridos + timedelta(second=10)) :
- #   time.sleep(5)
-  #  now = datetime.datetime.now()
-   # minute = now.minute
-
-#start = time.time()
-
-#while time.time() - start < 20:
-#    print ("test")
-#    time.sleep(3)
-
-#timeout = time.time() + 60*2   # 5 minutes from now
-#while True:
- #   test = 0
-  #  if test == 5 or time.time() > timeout:
-   #     break
-    #test = test - 1
-
-timeout = 5   # [seconds]
-
+tiempo = 20
+timeout = 10   # [seconds]
 timeout_start = time.time()
 test = 0
-print(datetime.now())
+print(datetime.now(),"Contando")
 while time.time() < timeout_start + timeout:
-    
-    if test == 5:
-        #print("Works")
+    if test == 10:
+        print("Works")
+        #print(datetime.now())55
+        #break
+    test = test + 1
+    #print(datetime.now())
+#led.n(10)
+print(datetime.now(),"Dispositivo apagandose") 
+while time.time() < timeout_start + tiempo:
+    if test == 20:
+        print("Works 2")
         #print(datetime.now())
         #break
     test = test + 1
     #print(datetime.now())
-print(datetime.now())
-
-   
+#led.n(10)
+print(datetime.now(),"Brillo del LED?")
+brillo = int(input())
+brillopwm = brillo/100.0
+x = round(brillopwm,2)
+print(str(x))
+print("Brillo regulado a:%s,porciento" %brillo)
