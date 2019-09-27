@@ -3,7 +3,6 @@ from time import sleep
 import datetime
 import logging
 
-t= datetime.datetime.now()
 class Pantalla():
     def __init__(self, displayID='PCF8574', direccion=0x27, columnas=16, lineas=2, ropt_lineas=True, luz_trasera=False, texto="texto por defecto"):
         self.texto = texto
@@ -61,10 +60,11 @@ class Pantalla():
         else:
             self.screen.write_string(self.text1)
 
-    def FechaHora(self):
+    def FechaHora(self, rtcEnabled = False):
         self.screen.clear()
         self.screen.display_enabled = True #prende la pantalla
         self.screen.cursor_pos = (0,0)
+        t= datetime.datetime.now()
         texto2 = "%s/%s/%s\r\n%s:%s:%s" % (t.day, t.month, t.year, t.hour, t.minute, t.second)
         logging.debug("[DEBUG]: ",type(texto2)," ",texto2)
         self.screen.write_string(texto2)
