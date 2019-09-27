@@ -19,13 +19,13 @@ class Pantalla():
         self.screen.cursor_mode = "blink"
         sleep(3)
         self.screen.cursor_mode = "hide"
-        self.screen.clear()
         print("Hecho")
 
-    def Encender(self):
+    def Bienvenida(self):
+        self.screen.clear()
         self.screen.display_enabled = True
         self.screen.backlight_enabled = True
-        self.screen.write_string(self.texto)
+        self.screen.write_string("Bienvenido")
         self.screen.cursor_mode = "blink"
         sleep(3)
         self.screen.cursor_mode = "hide"
@@ -36,28 +36,29 @@ class Pantalla():
         self.screen.backlight_enabled = False
         print("Apagado")
         
-
-
     def Limpiar(self):
         self.screen.clear()
         self.screen.cursor_mode = "hide"
         print("Pantalla limpia")
-    
+
     def Imprimir(self):
+        self.screen.clear()
         self.screen.display_enabled = True
+        self.screen.cursor_mode = "blink"
         self.text1 = self.texto
         print("prueba de texto ", self.text1)
         self.text1 = input("Ingrese el texto que desea que se imprima: ")
-        if self.text1 == "":
+        if self.text1 == str(""):
             self.text1=self.texto
             print(self.text1)
-            self.write_string("%c" %self.text1) #write_string no me ha servido, hay que buscar otro metodo
+            self.screen.write_string(self.text1)
         else:
-            self.write_string("%c" &self.text1)
+            self.screen.write_string(self.text1)
 
     def FechaHora(self):
+        self.screen.clear()
         self.screen.display_enabled = True #prende la pantalla
-        self.screen.cursor_pos = (1,1)
-        texto2 = "%s/%s/%s \r\n%s:%s:%s" % (t.day, t.month, t.year, t.hour, t.minute, t.second)
+        self.screen.cursor_pos = (0,0)
+        texto2 = "%s/%s/%s\r\n%s:%s:%s" % (t.day, t.month, t.year, t.hour, t.minute, t.second)
         print("[DEBUG]: ",type(texto2)," ",texto2)
         self.screen.write_string(texto2)
