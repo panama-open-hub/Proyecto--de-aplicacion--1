@@ -50,11 +50,11 @@ class Luz():
                 test = test + 1
                 #print(datetime.now())
             print(datetime.now(),"Brillo del LED?")
-            brillo = int(input())
-            brillopwm = brillo/100.0
+            brillo1 = int(input())
+            brillopwm = brillo1/100.0
             print(str(brillopwm))
             PWMLED.intial_value(brillopwm)
-            print("Brillo regulado a:%s" %brillo)
+            print("Brillo regulado a:%s" %brillo1)
 
 
 
