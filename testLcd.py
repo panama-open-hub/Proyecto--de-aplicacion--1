@@ -9,16 +9,16 @@ display.Limpiar()
 sleep(1)
 
 display.Test()
-sleep(3)
+sleep(2)
 
 display.Limpiar()
 sleep(1)
 
 display.Imprimir()
-sleep(5)
+sleep(2)
 
 display.FechaHora()
-sleep(7)
+sleep(2)
 
 display.Apagar()
 print("Terminado")

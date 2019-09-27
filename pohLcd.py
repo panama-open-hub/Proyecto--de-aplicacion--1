@@ -12,6 +12,12 @@ class Pantalla():
               auto_linebreaks=ropt_lineas,
               backlight_enabled=luz_trasera)
     
+    def log():
+        logging.basicConfig(
+            filename='logger.log',filemode='a', 
+            format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S',
+            level=logging.DEBUG)
+
     def Test(self):
         self.screen.clear()
         self.screen.backlight_enabled = True
@@ -19,7 +25,7 @@ class Pantalla():
         self.screen.cursor_mode = "blink"
         sleep(3)
         self.screen.cursor_mode = "hide"
-        print("Hecho")
+        logging.debug("Hecho")
 
     def Bienvenida(self):
         self.screen.clear()
@@ -29,28 +35,28 @@ class Pantalla():
         self.screen.cursor_mode = "blink"
         sleep(3)
         self.screen.cursor_mode = "hide"
-        print("Encendido")
+        logging.debug("Encendido")
     
     def Apagar(self):
         self.screen.display_enabled = False
         self.screen.backlight_enabled = False
-        print("Apagado")
+        logging.debug("Apagado")
         
     def Limpiar(self):
         self.screen.clear()
         self.screen.cursor_mode = "hide"
-        print("Pantalla limpia")
+        logging.debug("Pantalla limpia")
 
     def Imprimir(self):
         self.screen.clear()
         self.screen.display_enabled = True
         self.screen.cursor_mode = "blink"
         self.text1 = self.texto
-        print("prueba de texto ", self.text1)
+        logging.debug("prueba de texto ", self.text1)
         self.text1 = input("Ingrese el texto que desea que se imprima: ")
         if self.text1 == str(""):
             self.text1=self.texto
-            print(self.text1)
+            logging.debug(self.text1)
             self.screen.write_string(self.text1)
         else:
             self.screen.write_string(self.text1)
@@ -60,5 +66,5 @@ class Pantalla():
         self.screen.display_enabled = True #prende la pantalla
         self.screen.cursor_pos = (0,0)
         texto2 = "%s/%s/%s\r\n%s:%s:%s" % (t.day, t.month, t.year, t.hour, t.minute, t.second)
-        print("[DEBUG]: ",type(texto2)," ",texto2)
+        logging.debug("[DEBUG]: ",type(texto2)," ",texto2)
         self.screen.write_string(texto2)
