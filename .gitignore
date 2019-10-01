@@ -1,3 +1,7 @@
 *.pyc
 *.wav
+<<<<<<< develop
 *.json
+=======
+*.jsonyc
+>>>>>>> cambiado git ignore
