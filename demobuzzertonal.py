@@ -3,7 +3,6 @@ from gpiozero.tones import Tone
 from time import sleep
 t = TonalBuzzer(27) # change to whatever pin the buzzer is connected
 
-
 v1 = ["C4", "C4", "G4","G4","A4","A4","G4"]
 v2 = ["F4","F4","E4","E4","D4","D4","C4"]
 v3 = ["G4", "G4", "F4","F4","E4","E4","D4"]
