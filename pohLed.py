@@ -1,43 +1,58 @@
 from gpiozero import LED,PWMLED
 from datetime import datetime, timedelta
 import time 
+import logging
+import asyncio
 
 class Luz():
     def __init__(self, pin):
-        self.pin = pin
+        self.pin = pin #gpio pin, not the board pin
+        self.foco = LED(self.pin)
 
     def Encender(self):
-        led = LED(self. pin)
-        led.on()
-        print("Todo Bien")
+        self.foco.on()
+        logging.debug('Todo bien')
+
+    async def Encender_Async(self):
+        self.foco.on()
+        await asyncio.sleep(1)
         
     def Apagar(self):
-        led = LED(self.pin)
-        if LED.is_active == True:
-            led.off()
+        if self.foco.is_active == True:
+            self.foco.off()
         else:
             pass
     
+    async def Apagar_Async(self):
+        if self.foco.is_active == True:
+            self.foco.off()
+            await asyncio.sleep(1)
+    
     def Parpadeo(self):
-        led = LED(self.pin)
-        while led.on == True:
-            timeout = 20   # [seconds]
+        while self.foco.on == True:
+            timeout = 10   # [seconds]
             timeout_start = time.time()
             test = 0
-            print(datetime.now(),"Contando")
+            #print(datetime.now(),"Contando")
             while time.time() < timeout_start + timeout:
-                if test == 20:
-                    print("Works")
+                if test == 10:
+                    #print("Works")
                      #print(datetime.now())
-                     #break
+                     break
                 test = test + 1
                 #print(datetime.now())
-            led.n(10)
-            print(datetime.now(),"Dispositivo apagandose") 
+            self.foco.n(100)
+            #print(datetime.now(),"Dispositivo apagandose") 
+    
+
+    async def Parpadeo_Async(self):
+        self.foco.on()
+        await asyncio.sleep(2)
+        self.foco.off()
+
 
     def Brillo(self):
-        led = LED(self.pin)
-        while led.on == True:
+        while self.foco.on == True:
             tiempo = 10   # [seconds]
             timeout_start = time.time()
             test = 0
