@@ -2,7 +2,22 @@ import pohLcd
 import pohLed
 import time
 import asyncio
+import logging
 
+try:
+	logging.basicConfig(level=logging.DEBUG)
+	pantalla1 = pohLcd.Pantalla()
+	loop = asyncio.get_event_loop()
+	loop.run_until_complete(pantalla1.MostrarFechaHora_async(True))
+except KeyboardInterrupt:
+	pass
+finally:
+	loop.close()
+	print("Closing Loop")
+
+
+	
+"""
 Led1 = pohLed.Luz(26)
 display = pohLcd.Pantalla()
 async def runPantalla():
@@ -36,6 +51,8 @@ if __name__ == "__main__":
     asyncio.run(main())
     elapsed = time.perf_counter() - s
     print(f"{__file__} executed in {elapsed:0.2f} seconds.")
+"""
+
 
 """
 display = pohLcd.Pantalla()

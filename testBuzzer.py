@@ -1,9 +1,20 @@
 import pohBuzzer
-import Buzzer,TonalBuzzer
+from time import sleep
+import logging
+import asyncio
 
-bocina1 = pohBuzzer.buzz(27)
+logging.basicConfig(level=logging.DEBUG)
+bocina1 = pohBuzzer.Zumi2c()
+loop = asyncio.get_event_loop()
+loop.run_until_complete(bocina1.Test_Async())
+
+"""
+bocina1 = pohBuzzer.Zumi2c()
 print(bocina1.address)
 print(bocina1.buss)
-bocina1.Encender(27)
-bocina1.Apagar(27)
-
+bocina1.Encender()
+sleep(2)
+bocina1.Apagar()
+sleep(1)
+bocina1.Test()
+"""

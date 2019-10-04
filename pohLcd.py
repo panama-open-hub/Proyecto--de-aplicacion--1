@@ -102,12 +102,21 @@ class Pantalla():
         print("[DEBUG]: ",type(texto2)," ",texto2)
         self.screen.write_string(texto2)
     
-    async def FechaHora_async(self):
-        ta= datetime.datetime.now()
-        self.screen.clear()
+    async def MostrarFechaHora_async(self, loop = False, sleepTime = 0.95):
+        #TODO: agregar cero delante de 1 a 9 segundos
         if self.screen.backlight_enabled == False:
-            self.screen.backlight_enabled = True #prende la pantalla
+            self.screen.backlight_enabled = True #prende luz de la pantalla
         self.screen.cursor_pos = (0,0)
+        while loop == True:
+            self.screen.clear()
+            ta= datetime.datetime.now()
+            texto2 = "%s/%s/%s\r\n%s:%s:%s" % (ta.day, ta.month, ta.year, ta.hour, ta.minute, ta.second)
+            print("[DEBUG]: ",type(texto2)," ",texto2)
+            self.screen.write_string(texto2)
+            await asyncio.sleep(sleepTime)
+        self.screen.clear()
+        ta= datetime.datetime.now()
         texto2 = "%s/%s/%s\r\n%s:%s:%s" % (ta.day, ta.month, ta.year, ta.hour, ta.minute, ta.second)
         print("[DEBUG]: ",type(texto2)," ",texto2)
         self.screen.write_string(texto2)
+        await asyncio.sleep(sleepTime)
