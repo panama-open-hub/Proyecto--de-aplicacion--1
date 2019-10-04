@@ -1,18 +1,64 @@
-from gpiozero import pohBuzzer
+from gpiozero import Buzzer,TonalBuzzer
 from gpiozero.tones import Tone
 from time import sleep
+import logging
 t = TonalBuzzer(27)
+v1 = ["C4", "C4", "G4","G4","A4","A4","G4"]
+v2 = ["F4","F4","E4","E4","D4","D4","C4"]
+v3 = ["G4", "G4", "F4","F4","E4","E4","D4"]
+v4 = ["C4", "D4", "E4","F4","G4","G4"]
+v5 = ["A4","A4", "A4", "A4","G4","G4"]
+v6 = ["F4", "F4", "F4","F4","E4","E4"]
+v7 = ["D4","D4","D4","E4","C4","C4"]
 
-class zum():
-   def __init__(self,busnemer=1,address=20)
-      self.address = 27
-      self.buss = SMBus(busnumber)
 
-   def Encender(self)
+class buzz():
+   
+   def __init__(self,pin=27):
+      self.pin = pin
+
+   def Encender(self):
+
+      bz = Buzzer(self.pin)
+      Buzzer.on()
+      song = [v1,v2,v3,v3,v1,v2]
+
+      for verse in song:
+         for note in verse:
+            t.play(note)
+            sleep(0.4)
+            t.stop()
+            sleep(0.1)
+         sleep(0.2)
+      logging.debug("Encendido")
+
+   def Apagado(self):
+
+      bz= Buzzer(self.pin)
       
-   def Apagado(self)
+      Buzzer.on()
 
+      song = [v4,v5,v6,v7]
 
+      for verse in song:
+         for note in verse:
+            t.play(note)
+            sleep(0.4)
+            t.stop()
+            sleep(0.1)
+         sleep(0.2)
+      Buzzer.off()
+
+      logging.debug("Apagado")
+
+   def log():
+
+      logging.basicConfig(
+         filename='logger.log',filemode='a', 
+         format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S',
+         level=logging.DEBUG)
+
+"""
 class Zumi2c():
    def __init__(self,busNumber=1,addr=0x20):
       self.address = addr
@@ -32,7 +78,7 @@ class Zumi2c():
       self.beep_off()
       print("Apagado")
       sleep(sleepTime)
-      
+"""
 
 
 
