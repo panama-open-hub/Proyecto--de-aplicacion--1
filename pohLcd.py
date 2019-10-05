@@ -1,6 +1,7 @@
 from RPLCD.i2c import CharLCD
-from time import sleep
-import datetime
+from datetime import datetime
+from time import sleep, mktime
+import time
 import logging
 import asyncio
 
@@ -102,21 +103,27 @@ class Pantalla():
         print("[DEBUG]: ",type(texto2)," ",texto2)
         self.screen.write_string(texto2)
     
-    async def MostrarFechaHora_async(self, loop = False, sleepTime = 0.95):
+    async def MostrarFechaHora_async(self, loop = False, sleepTime = 0.6):
         #TODO: agregar cero delante de 1 a 9 segundos
         if self.screen.backlight_enabled == False:
             self.screen.backlight_enabled = True #prende luz de la pantalla
-        self.screen.cursor_pos = (0,0)
-        while loop == True:
-            self.screen.clear()
-            ta= datetime.datetime.now()
-            texto2 = "%s/%s/%s\r\n%s:%s:%s" % (ta.day, ta.month, ta.year, ta.hour, ta.minute, ta.second)
-            print("[DEBUG]: ",type(texto2)," ",texto2)
-            self.screen.write_string(texto2)
-            await asyncio.sleep(sleepTime)
+        t_ini = mktime(datetime.now().timetuple()) #leer primer tiempo 
         self.screen.clear()
-        ta= datetime.datetime.now()
-        texto2 = "%s/%s/%s\r\n%s:%s:%s" % (ta.day, ta.month, ta.year, ta.hour, ta.minute, ta.second)
-        print("[DEBUG]: ",type(texto2)," ",texto2)
-        self.screen.write_string(texto2)
+        while loop == True:
+            t_act = mktime(datetime.now().timetuple()) #leer un segundo tiempo
+            self.screen.cursor_pos = (0,0)
+            if t_ini < t_act:
+                t_ini = t_act                           #se guarda el tiempo actual como el primer tiempo
+                t = datetime.now().strftime("%d/%m/%y\n\r%H:%M:%S") #tiempo real
+                self.screen.write_string(t)
+                print(t)
+                logging.debug(t)
+                await asyncio.sleep(sleepTime)                  #si se escribe el tiempo correcto se espera un segundo
+            else:
+                await asyncio.sleep(0.01)                        #si no entonces vuelve a revisar
+        self.screen.clear()
+        t = datetime.now().strftime("%d/%m/%y \n%H:%M:%S\n")
+        self.screen.write_string(t)
+        print(t)
+        logging.debug(t)
         await asyncio.sleep(sleepTime)

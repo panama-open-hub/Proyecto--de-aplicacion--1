@@ -45,25 +45,23 @@ class Luz():
             #print(datetime.now(),"Dispositivo apagandose") 
     
 
-    async def Parpadeo_Async(self, sleeptime = 1):
+    async def Parpadeo_Async(self,num = 1,sleeptim = 1):
         logging.debug("Led iniciando prueba asincrona")
-        self.foco.on()
-        await asyncio.sleep(sleeptime)
-        self.foco.toggle()
-        await asyncio.sleep(sleeptime)
-        self.foco.toggle()
-        await asyncio.sleep(sleeptime)
-        self.foco.toggle()
-        await asyncio.sleep(sleeptime)
-        self.foco.toggle()
-        await asyncio.sleep(sleeptime)
-        self.foco.toggle()
-        await asyncio.sleep(sleeptime)
-        self.foco.toggle()
-        await asyncio.sleep(sleeptime)
-        self.foco.toggle()
-        await asyncio.sleep(sleeptime)
-
+        sleeptime = sleeptim / 2.0
+        if num==-1:
+            while True:
+                self.foco.on()
+                await asyncio.sleep(sleeptim)
+                self.foco.off()
+                await asyncio.sleep(sleeptime)
+        else:
+            while num > 0:
+                self.foco.on()
+                await asyncio.sleep(sleeptim)
+                self.foco.off()
+                await asyncio.sleep(sleeptime)
+                num = num - 1
+       
 
     def Brillo(self):
         while self.foco.on == True:

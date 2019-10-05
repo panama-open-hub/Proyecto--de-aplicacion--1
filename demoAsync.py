@@ -11,7 +11,7 @@ pantalla1 = pohLcd.Pantalla()
 
 
 async def main():
-    tareaLed = asyncio.create_task(led1.Parpadeo_Async(0.75))
+    tareaLed = asyncio.create_task(led1.Parpadeo_Async(-1))
     tareaBocina = asyncio.create_task(bocina1.Test_Async())
     tareaPantalla = asyncio.create_task(pantalla1.MostrarFechaHora_async(True))
     await tareaLed
