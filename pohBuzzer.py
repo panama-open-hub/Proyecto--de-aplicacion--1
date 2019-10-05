@@ -113,6 +113,22 @@ class Zumi2c():
       await asyncio.sleep(0.5)
       self.beep_off()
       await asyncio.sleep(0.5)
+   
+   async def Inicio_Async(self):
+         logging.debug("Tocando tonada de inicio")
+         self.beep_on()
+         await asyncio.sleep(0.25)
+         self.beep_off()
+         await asyncio.sleep(0.25)
+         self.beep_on()
+         await asyncio.sleep(0.25)
+         self.beep_off()
+         await asyncio.sleep(0.25)
+         self.beep_on()
+         await asyncio.sleep(0.25)
+         self.beep_off()
+         await asyncio.sleep(0.25)
+
 
 
 class ZumTonal():

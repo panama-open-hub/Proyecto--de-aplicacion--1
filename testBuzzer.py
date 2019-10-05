@@ -6,7 +6,7 @@ import asyncio
 logging.basicConfig(level=logging.DEBUG)
 bocina1 = pohBuzzer.Zumi2c()
 loop = asyncio.get_event_loop()
-loop.run_until_complete(bocina1.Test_Async())
+loop.run_until_complete(bocina1.Inicio_Async())
 
 """
 bocina1 = pohBuzzer.Zumi2c()
