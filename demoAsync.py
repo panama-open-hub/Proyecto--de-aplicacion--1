@@ -1,10 +1,13 @@
 # countasync.py
 import asyncio
 import time
+import logging
 import pohLcd 
 import pohLed 
 import pohBuzzer
+import pohRtc
 
+logging.basicConfig(level=logging.DEBUG)
 led1 = pohLed.Luz(26)
 bocina1 = pohBuzzer.Zumi2c()
 pantalla1 = pohLcd.Pantalla()
@@ -13,7 +16,8 @@ pantalla1 = pohLcd.Pantalla()
 async def main():
     tareaLed = asyncio.create_task(led1.Parpadeo_Async(-1))
     tareaBocina = asyncio.create_task(bocina1.Test_Async())
-    tareaPantalla = asyncio.create_task(pantalla1.MostrarFechaHora_async(True))
+    #tareaPantalla = asyncio.create_task(pantalla1.MostrarFechaHora_async(True))
+    tareaPantalla = asyncio.create_task(pantalla1.EscribirHoraLoop())
     await tareaLed
     await tareaBocina
     await tareaPantalla
@@ -27,6 +31,7 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         pass
     finally:
-        print("Closing Loop")
+        pantalla1.Apagar()
+        print("Ciclo de tareas asincronas cerrado")
     
 
