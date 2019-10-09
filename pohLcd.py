@@ -45,12 +45,12 @@ class Pantalla():
         self.screen.backlight_enabled = False
         logging.debug("Pantalla apagada")
 
-    async def Apagar_async(self):
+    async def Apagar_Async(self):
         self.screen.backlight_enabled = False
         self.screen.display_enabled = False
         logging.debug("Apagado asincrono")
     
-    async def Limpiar_async(self):
+    async def Limpiar_Async(self):
         self.screen.cursor_mode = "hide"
         await self.screen.clear()
 

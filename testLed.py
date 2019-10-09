@@ -5,7 +5,7 @@ import asyncio
 
 try:
 	logging.basicConfig(level=logging.DEBUG)
-	led1 = pohLed.Luz(26)
+	led1 = pohLed.Luz(18) #gpio 18 or 26
 	loop = asyncio.get_event_loop()
 	loop.run_until_complete(led1.Parpadeo_Async(7,1))
 except KeyboardInterrupt:

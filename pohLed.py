@@ -6,7 +6,13 @@ import asyncio
 
 class Luz():
     def __init__(self, pin):
-        self.pin = pin #gpio pin, not the board pin
+        """Inicializacion de un led
+        Parameters
+        ----------
+        pin : int
+            gpio, not board
+        """
+        self.pin = pin 
         self.foco = LED(self.pin)
 
     def Encender(self):
