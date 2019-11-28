@@ -34,20 +34,46 @@ class HomeHandler(tornado.web.RequestHandler):
         else:
             exp = None
         self.render("index.html", data=exp)
+
+class LoginHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.render("login.html")
+    def post(self):
+        if self.get_argument('btn1', None) is not None:
+            self.write('Basic Query')
+        elif self.get_argument('btn2', None) is not None:
+            self.write('Advanced Query')
         
-class SignInHandler(tornado.web.RequestHandler):
+  
+class SigninHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("signin.html")
 
 class BackHandler(tornado.web.RequestHandler):
     def post(self):
-        print("eyyyyyyyyyyyyyyyyyyyyyyyyyyy")
-        data_json = json.dumps(_data)
-        if data_json:
-            exp = json.loads(data_json)
-        else:
-            exp = None
-        self.render("index.html", data=exp)
+        print("entró a post back")
+        Nombrecompleto = self.get_argument("nombre")
+        Apellido = self.get_argument('apellido')
+        Telefono = self.get_argument('tel')
+        Email = self.get_argument('email')
+        Pais = self.get_argument('pais')
+        Ciudad = self.get_argument('ciudad')
+        NombredeUsuario = self.get_argument('username')
+        Contraseña = self.get_argument('contra')
+        print(Nombrecompleto)
+        print(Apellido)
+        print(Telefono)
+        print(Email)
+        print(Pais)
+        print(Ciudad)
+        print(NombredeUsuario)
+        print(Contraseña)
+        #data_json = json.dumps(_data)
+        #if data_json:
+        #    exp = json.loads(data_json)
+        #else:
+        #    exp = None
+        self.render('index.html', username1 = NombredeUsuario)
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -55,7 +81,8 @@ class Application(tornado.web.Application):
 
         handlers = [
             (r'/', HomeHandler),
-            (r'/signin', SignInHandler),
+            (r'/login', LoginHandler),
+            (r'/signin', SigninHandler),
             (r'/back', BackHandler),
             #(r"/postdata",PostData),
             #(r"/stop", StopServer),
