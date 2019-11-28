@@ -11,8 +11,8 @@ import tornado.web
 from tornado import gen,ioloop, web
 from tornado.gen import multi
 from tornado.options import define, options
-import gpiozero #BCM pin numbering
-import pohRtc
+#import gpiozero #BCM pin numbering
+#import pohRtc
 
 
 print("The Python version is %s.%s.%s" % sys.version_info[:3])
@@ -34,6 +34,20 @@ class HomeHandler(tornado.web.RequestHandler):
         else:
             exp = None
         self.render("index.html", data=exp)
+        
+class SignInHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.render("signin.html")
+
+class BackHandler(tornado.web.RequestHandler):
+    def post(self):
+        print("eyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+        data_json = json.dumps(_data)
+        if data_json:
+            exp = json.loads(data_json)
+        else:
+            exp = None
+        self.render("index.html", data=exp)
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -41,6 +55,8 @@ class Application(tornado.web.Application):
 
         handlers = [
             (r'/', HomeHandler),
+            (r'/signin', SignInHandler),
+            (r'/back', BackHandler),
             #(r"/postdata",PostData),
             #(r"/stop", StopServer),
             #(r"/api/user", Hello),
