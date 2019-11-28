@@ -1,3 +1,4 @@
 *.pyc
 *.wav
 *.json
+.vscode/settings.json
